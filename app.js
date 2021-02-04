@@ -1,24 +1,9 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const responseTime = require('response-time')
 
-// function printServerLog(req, res) {
-//   const DateNow = Date.now()
-//   const timeFormat = new Intl.DateTimeFormat("cn-ca-chinese", {
-//     timeStyle: "medium",
-//     month: "numeric",
-//     year: "numeric",
-//     day: "numeric",
-//     hour: "numeric",
-//     minute: "numeric",
-//     second: "numeric",
-//     hour12: false
-//   })
-//   const timeNow = timeFormat.format(DateNow)
-//   console.log(`${timeNow} | ${req.method} from ${req.originalUrl}`)
-// }
-
-app.use(function (req, res, next) {
+app.use(responseTime(function (req, res, time) {
   const DateNow = Date.now()
   const timeFormat = new Intl.DateTimeFormat("cn-ca-chinese", {
     timeStyle: "medium",
@@ -31,9 +16,8 @@ app.use(function (req, res, next) {
     hour12: false
   })
   const timeNow = timeFormat.format(DateNow)
-  console.log(`${timeNow} | ${req.method} from ${req.originalUrl}`)
-  next()
-})
+  console.log(`${timeNow} | ${req.method} from ${req.originalUrl} | total time: ${time} ms`)
+}))
 
 app.get('/', (req, res) => {
   res.send('列出全部 Todo')
