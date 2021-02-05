@@ -3,7 +3,7 @@
 A middleware that prints request/response time stamps in the terminal
 
 ## Features
-1. Users are able to read about the request/response time stamps in the terminal
+Users are able to read about the request/response time stamps in the terminal
 
 ## Environment SetUp
 1. Node.js v14.15.4
