@@ -34,11 +34,11 @@ localhost:3000
 ```
 7. Try out different paths and see results in terminal
 ```
-/
+localhost:3000/
 ```
 ```
-/:id
+localhost:3000/:id
 ```
 ```
-/new
+localhost:3000/new
 ```
